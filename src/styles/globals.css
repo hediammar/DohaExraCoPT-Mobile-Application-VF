@@ -1,0 +1,773 @@
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --font-size: 14px;
+  --font-size-mobile: 16px;
+  
+  /* Qatar Panels Red Theme */
+  --background: #8B2633;
+  --foreground: #ffffff;
+  --card: #5A1A23;
+  --card-foreground: #ffffff;
+  --popover: #3D111A;
+  --popover-foreground: #ffffff;
+  --primary: #C13B4A;
+  --primary-foreground: #ffffff;
+  --secondary: #7A2531;
+  --secondary-foreground: #ffffff;
+  --muted: #5A1A23;
+  --muted-foreground: #D1B3B8;
+  --accent: #9B3340;
+  --accent-foreground: #ffffff;
+  --destructive: #DC2626;
+  --destructive-foreground: #ffffff;
+  --border: #7A2531;
+  --input: #3D111A;
+  --input-background: #3D111A;
+  --switch-background: #7A2531;
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --ring: #C13B4A;
+  
+  /* Qatar theme status colors */
+  --status-complete: #2D5A3D;
+  --status-complete-foreground: #A7E8B5;
+  --status-active: #C13B4A;
+  --status-active-foreground: #ffffff;
+  --status-onhold: #8B5A2D;
+  --status-onhold-foreground: #F2D99F;
+  --status-inactive: #5A2D31;
+  --status-inactive-foreground: #D1B3B8;
+  --status-rejected: #7A1F1F;
+  --status-rejected-foreground: #F2A6A6;
+  --status-delivered: #2D4A5A;
+  --status-delivered-foreground: #A6CCE8;
+  --status-manufactured: #5A3D2D;
+  --status-manufactured-foreground: #E8C7A6;
+  --status-inspected: #4A2D5A;
+  --status-inspected-foreground: #C7A6E8;
+  --status-installed: #1F4A3D;
+  --status-installed-foreground: #80E6CC;
+  
+  /* Chart colors adapted for red theme */
+  --chart-1: #C13B4A;
+  --chart-2: #2D5A3D;
+  --chart-3: #2D4A5A;
+  --chart-4: #8B5A2D;
+  --chart-5: #5A3D2D;
+  
+  --radius: 0.75rem;
+  
+  /* Sidebar specific to Qatar theme */
+  --sidebar: #3D111A;
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: #C13B4A;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #5A1A23;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #7A2531;
+  --sidebar-ring: #C13B4A;
+  
+  /* Header specific variables */
+  --header-height: 64px;
+  --header-height-mobile: 56px;
+
+  /* Application branding */
+  --app-primary: #C13B4A;
+  --app-secondary: #8B2633;
+  --app-accent: #9B3340;
+}
+
+.dark {
+  /* Dark mode uses the same Qatar red theme */
+  --background: #8B2633;
+  --foreground: #ffffff;
+  --card: #5A1A23;
+  --card-foreground: #ffffff;
+  --popover: #3D111A;
+  --popover-foreground: #ffffff;
+  --primary: #C13B4A;
+  --primary-foreground: #ffffff;
+  --secondary: #7A2531;
+  --secondary-foreground: #ffffff;
+  --muted: #5A1A23;
+  --muted-foreground: #D1B3B8;
+  --accent: #9B3340;
+  --accent-foreground: #ffffff;
+  --destructive: #DC2626;
+  --destructive-foreground: #ffffff;
+  --border: #7A2531;
+  --input: #3D111A;
+  --ring: #C13B4A;
+  --sidebar: #3D111A;
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: #C13B4A;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #5A1A23;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #7A2531;
+  --sidebar-ring: #C13B4A;
+  
+  /* Status colors for dark mode */
+  --status-complete: #2D5A3D;
+  --status-complete-foreground: #A7E8B5;
+  --status-active: #C13B4A;
+  --status-active-foreground: #ffffff;
+  --status-onhold: #8B5A2D;
+  --status-onhold-foreground: #F2D99F;
+  --status-inactive: #5A2D31;
+  --status-inactive-foreground: #D1B3B8;
+  --status-rejected: #7A1F1F;
+  --status-rejected-foreground: #F2A6A6;
+  --status-delivered: #2D4A5A;
+  --status-delivered-foreground: #A6CCE8;
+  --status-manufactured: #5A3D2D;
+  --status-manufactured-foreground: #E8C7A6;
+  --status-inspected: #4A2D5A;
+  --status-inspected-foreground: #C7A6E8;
+  --status-installed: #1F4A3D;
+  --status-installed-foreground: #80E6CC;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-switch-background: var(--switch-background);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  
+  /* Status color utilities */
+  --color-status-complete: var(--status-complete);
+  --color-status-complete-foreground: var(--status-complete-foreground);
+  --color-status-active: var(--status-active);
+  --color-status-active-foreground: var(--status-active-foreground);
+  --color-status-onhold: var(--status-onhold);
+  --color-status-onhold-foreground: var(--status-onhold-foreground);
+  --color-status-inactive: var(--status-inactive);
+  --color-status-inactive-foreground: var(--status-inactive-foreground);
+  --color-status-rejected: var(--status-rejected);
+  --color-status-rejected-foreground: var(--status-rejected-foreground);
+  --color-status-delivered: var(--status-delivered);
+  --color-status-delivered-foreground: var(--status-delivered-foreground);
+  --color-status-manufactured: var(--status-manufactured);
+  --color-status-manufactured-foreground: var(--status-manufactured-foreground);
+  --color-status-inspected: var(--status-inspected);
+  --color-status-inspected-foreground: var(--status-inspected-foreground);
+  --color-status-installed: var(--status-installed);
+  --color-status-installed-foreground: var(--status-installed-foreground);
+  
+  /* App branding colors */
+  --color-app-primary: var(--app-primary);
+  --color-app-secondary: var(--app-secondary);
+  --color-app-accent: var(--app-accent);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    /* Prevent horizontal scrolling on mobile */
+    overflow-x: hidden;
+    /* Improve text rendering on mobile */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Prevent zoom on input focus on iOS */
+    -webkit-text-size-adjust: 100%;
+    /* Qatar theme background */
+    background: linear-gradient(135deg, #8B2633 0%, #7A2531 100%);
+  }
+
+  /* Improve touch targets on mobile */
+  @media (max-width: 767px) {
+    button, 
+    [role="button"], 
+    input, 
+    select, 
+    textarea {
+      min-height: 44px; /* Apple's recommended minimum touch target */
+    }
+  }
+}
+
+/**
+ * Base typography for Qatar Panels theme
+ */
+@layer base {
+  :where(:not(:has([class*=" text-"]), :not(:has([class^="text-"])))) {
+    h1 {
+      font-size: var(--text-2xl);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.4;
+      color: var(--foreground);
+    }
+
+    h2 {
+      font-size: var(--text-xl);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.4;
+      color: var(--foreground);
+    }
+
+    h3 {
+      font-size: var(--text-lg);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.4;
+      color: var(--foreground);
+    }
+
+    h4 {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.4;
+      color: var(--foreground);
+    }
+
+    p {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-normal);
+      line-height: 1.5;
+      color: var(--foreground);
+    }
+
+    label {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.4;
+      color: var(--foreground);
+    }
+
+    button {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.4;
+    }
+
+    input {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-normal);
+      line-height: 1.5;
+      color: var(--foreground);
+    }
+  }
+}
+
+/* Responsive font sizing */
+html {
+  font-size: var(--font-size);
+}
+
+@media (max-width: 767px) {
+  html {
+    font-size: var(--font-size-mobile);
+  }
+}
+
+/* Qatar Panels specific utility classes */
+@layer utilities {
+  /* Qatar theme-aligned status badges */
+  .status-complete {
+    background-color: var(--status-complete);
+    color: var(--status-complete-foreground);
+    @apply px-2 py-1 rounded-md text-xs font-medium border border-green-500/20;
+  }
+  
+  .status-active {
+    background-color: var(--status-active);
+    color: var(--status-active-foreground);
+    @apply px-2 py-1 rounded-md text-xs font-medium;
+  }
+  
+  .status-onhold {
+    background-color: var(--status-onhold);
+    color: var(--status-onhold-foreground);
+    @apply px-2 py-1 rounded-md text-xs font-medium border border-amber-500/20;
+  }
+  
+  .status-inactive {
+    background-color: var(--status-inactive);
+    color: var(--status-inactive-foreground);
+    @apply px-2 py-1 rounded-md text-xs font-medium border border-gray-500/20;
+  }
+
+  /* Panel status badges (Qatar theme aligned) */
+  .status-installed {
+    background-color: var(--status-installed);
+    color: var(--status-installed-foreground);
+    @apply px-2 py-1 rounded-md text-xs font-medium border border-emerald-500/20;
+  }
+
+  .status-delivered {
+    background-color: var(--status-delivered);
+    color: var(--status-delivered-foreground);
+    @apply px-2 py-1 rounded-md text-xs font-medium border border-blue-400/20;
+  }
+
+  .status-rejected {
+    background-color: var(--status-rejected);
+    color: var(--status-rejected-foreground);
+    @apply px-2 py-1 rounded-md text-xs font-medium border border-red-400/20;
+  }
+
+  .status-manufactured {
+    background-color: var(--status-manufactured);
+    color: var(--status-manufactured-foreground);
+    @apply px-2 py-1 rounded-md text-xs font-medium border border-orange-400/20;
+  }
+
+  .status-inspected {
+    background-color: var(--status-inspected);
+    color: var(--status-inspected-foreground);
+    @apply px-2 py-1 rounded-md text-xs font-medium border border-purple-400/20;
+  }
+
+  /* Online/Offline status badges */
+  .status-online {
+    background-color: var(--status-complete);
+    color: var(--status-complete-foreground);
+    @apply px-2 py-1 rounded-md text-xs font-medium border border-green-400/30;
+  }
+
+  .status-offline {
+    background-color: var(--status-inactive);
+    color: var(--status-inactive-foreground);
+    @apply px-2 py-1 rounded-md text-xs font-medium border border-gray-400/30;
+  }
+
+  /* User role badges */
+  .role-admin {
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+    @apply px-2 py-1 rounded-md text-xs font-medium;
+  }
+
+  .role-manager {
+    background-color: var(--accent);
+    color: var(--accent-foreground);
+    @apply px-2 py-1 rounded-md text-xs font-medium;
+  }
+
+  .role-user {
+    background-color: var(--secondary);
+    color: var(--secondary-foreground);
+    @apply px-2 py-1 rounded-md text-xs font-medium;
+  }
+
+  .role-viewer {
+    background-color: var(--muted);
+    color: var(--muted-foreground);
+    @apply px-2 py-1 rounded-md text-xs font-medium border border-border;
+  }
+
+  /* Qatar theme cards */
+  .qatar-card {
+    @apply bg-card border border-border rounded-lg p-6 shadow-lg;
+    background: linear-gradient(135deg, #5A1A23 0%, #4D1620 100%);
+  }
+
+  .qatar-card-header {
+    @apply flex items-start justify-between mb-4;
+  }
+
+  .qatar-card-title {
+    @apply text-lg font-semibold text-foreground mb-2;
+  }
+
+  .qatar-card-subtitle {
+    @apply text-sm text-muted-foreground mb-1;
+  }
+
+  .qatar-card-content {
+    @apply space-y-3;
+  }
+
+  .qatar-card-footer {
+    @apply mt-4 pt-4 border-t border-border/50;
+  }
+
+  /* Progress bars */
+  .qatar-progress {
+    @apply w-full bg-secondary rounded-full h-2;
+  }
+
+  .qatar-progress-bar {
+    @apply h-2 bg-primary rounded-full transition-all duration-300;
+  }
+
+  /* Search and filter components */
+  .qatar-search {
+    @apply bg-input border border-border rounded-lg px-4 py-2 text-foreground placeholder:text-muted-foreground;
+  }
+
+  .qatar-filter-btn {
+    @apply px-4 py-2 rounded-lg border border-border bg-secondary text-secondary-foreground hover:bg-accent transition-colors;
+  }
+
+  .qatar-filter-btn-active {
+    @apply bg-primary text-primary-foreground border-primary;
+  }
+
+  /* Sidebar Qatar theme */
+  .qatar-sidebar {
+    @apply bg-sidebar border-r border-sidebar-border;
+    background: linear-gradient(180deg, #3D111A 0%, #2D0C14 100%);
+  }
+
+  .qatar-sidebar-header {
+    @apply p-6 border-b border-sidebar-border;
+  }
+
+  .qatar-sidebar-brand {
+    @apply text-xl font-bold text-sidebar-foreground;
+  }
+
+  .qatar-sidebar-subtitle {
+    @apply text-sm text-sidebar-foreground/70;
+  }
+
+  .qatar-nav-item {
+    @apply flex items-center gap-3 px-4 py-3 text-sidebar-foreground hover:bg-sidebar-accent rounded-lg transition-colors;
+  }
+
+  .qatar-nav-item-active {
+    @apply bg-sidebar-primary text-sidebar-primary-foreground;
+  }
+
+  /* Touch-friendly button sizing */
+  .touch-target {
+    @apply min-h-[44px] min-w-[44px];
+  }
+
+  /* Responsive spacing */
+  .container-padding {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Safe area padding for mobile devices with notches */
+  .safe-area-top {
+    padding-top: env(safe-area-inset-top);
+  }
+
+  .safe-area-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  /* Scroll area optimizations */
+  .scroll-smooth {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Prevent text selection on interactive elements */
+  .no-select {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  /* Sticky header utilities */
+  .sticky-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    background: rgba(139, 38, 51, 0.95);
+  }
+
+  /* Avatar utilities */
+  .avatar-online-indicator {
+    position: absolute;
+    bottom: -1px;
+    right: -1px;
+    width: 12px;
+    height: 12px;
+    background-color: #22c55e;
+    border: 2px solid hsl(var(--background));
+    border-radius: 50%;
+  }
+
+  @media (max-width: 767px) {
+    .avatar-online-indicator {
+      width: 10px;
+      height: 10px;
+    }
+  }
+}
+
+/* Mobile-specific optimizations */
+@media (max-width: 767px) {
+  /* Larger touch targets */
+  .mobile-touch {
+    @apply min-h-[48px] px-4 py-3;
+  }
+
+  /* Mobile navigation overlay styles */
+  .mobile-nav-overlay {
+    @apply fixed inset-0 bg-black/50 z-40;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+  }
+
+  /* Mobile sidebar positioning */
+  .mobile-sidebar {
+    @apply fixed inset-y-0 left-0 z-50;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .mobile-sidebar.open {
+    transform: translateX(0);
+  }
+
+  /* Prevent body scroll when mobile menu is open */
+  body.mobile-menu-open {
+    overflow: hidden;
+  }
+
+  /* Reduce motion for users who prefer it */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* Mobile-specific header adjustments */
+  .user-header-mobile {
+    height: var(--header-height-mobile);
+  }
+}
+
+/* Tablet-specific styles */
+@media (min-width: 768px) and (max-width: 1023px) {
+  /* Optimize for tablet layouts */
+  .tablet-grid {
+    @apply grid-cols-2 gap-4;
+  }
+}
+
+/* Desktop-specific styles */
+@media (min-width: 1024px) {
+  .desktop-grid {
+    @apply grid-cols-3 gap-6;
+  }
+
+  .user-header-desktop {
+    height: var(--header-header);
+  }
+}
+
+/* High DPI display optimizations */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  /* Optimize rendering for high DPI displays */
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Popover animations */
+@layer utilities {
+  .popover-content-animate {
+    animation: popover-in 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  @keyframes popover-in {
+    0% {
+      opacity: 0;
+      transform: scale(0.95) translateY(-2px);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  * {
+    background: white !important;
+    color: black !important;
+  }
+
+  /* Hide user header in print */
+  .sticky-header {
+    display: none !important;
+  }
+}
+
+/* Focus styles for accessibility */
+@layer base {
+  *:focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+  }
+}
+
+/* Smooth transitions for theme changes */
+@layer base {
+  * {
+    transition-property: color, background-color, border-color;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+  }
+}
+
+/* Qatar Panels specific animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.qatar-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Custom scrollbar for Qatar theme */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--muted);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* Force English locale for date inputs */
+input[type="date"] {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Override browser locale for date inputs */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+/* Force English date format display */
+input[type="date"]::before {
+  content: attr(placeholder);
+  color: var(--muted-foreground);
+}
+
+input[type="date"]:focus::before,
+input[type="date"]:valid::before {
+  display: none;
+}
+
+/* Custom Calendar Styles */
+.custom-calendar {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  z-index: 1000;
+}
+
+.custom-calendar .calendar-grid {
+  display: grid !important;
+  grid-template-columns: repeat(7, 1fr) !important;
+  gap: 2px !important;
+  width: 100% !important;
+  max-width: 280px !important;
+  grid-auto-rows: 28px !important;
+}
+
+.custom-calendar .calendar-day {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.custom-calendar .calendar-day:hover {
+  background-color: var(--accent) !important;
+  color: var(--accent-foreground) !important;
+  transform: scale(1.05);
+}
+
+.custom-calendar .calendar-day.today {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  font-weight: bold;
+}
+
+.custom-calendar .calendar-day.selected {
+  background-color: var(--accent);
+  color: var(--accent-foreground);
+}
+
+.custom-calendar .calendar-day.other-month {
+  color: var(--muted-foreground);
+  opacity: 0.5;
+}
+
+/* Ensure popover stays within viewport */
+[data-radix-popper-content-wrapper] {
+  z-index: 1000 !important;
+}
+
+/* Modal-specific calendar positioning */
+.dialog-content .custom-calendar {
+  position: relative;
+  z-index: 1001;
+}
