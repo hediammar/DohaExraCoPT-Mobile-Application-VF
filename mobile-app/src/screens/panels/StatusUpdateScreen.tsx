@@ -8,10 +8,12 @@ import {
   Alert,
   TextInput,
   ActivityIndicator,
+  Modal,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useRoute, useNavigation } from '@react-navigation/native';
 import * as ImagePicker from 'expo-image-picker';
+import { useCameraPermissions } from 'expo-camera';
 import { supabase } from '../../lib/supabase';
 import { useAuth } from '../../contexts/AuthContext';
 import {
@@ -23,6 +25,7 @@ import {
 import { ScannerScreenNavigationProp } from '../../types/navigation';
 import { QatarColors, PanelStatusColors } from '../../constants/colors';
 import { NavigationBar } from '../../components/NavigationBar';
+import { CameraPermissionPrompt } from '../../components/CameraPermissionPrompt';
 import { isCustomerRole, UserRole } from '../../utils/rolePermissions';
 
 interface PanelModel {
@@ -54,6 +57,9 @@ export default function StatusUpdateScreen() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [validStatuses, setValidStatuses] = useState<number[]>([]);
   const [previousStatus, setPreviousStatus] = useState<number | null>(null);
+  const [cameraPermission, requestCameraPermission] = useCameraPermissions();
+  const [showCameraPermissionPrompt, setShowCameraPermissionPrompt] = useState(false);
+  const [pendingCameraLaunch, setPendingCameraLaunch] = useState(false);
   
   const route = useRoute();
   const navigation = useNavigation<ScannerScreenNavigationProp>();
@@ -174,9 +180,40 @@ export default function StatusUpdateScreen() {
     }
   };
 
-  const handleImagePicker = async () => {
+  const launchCamera = async () => {
+    const result = await ImagePicker.launchCameraAsync({
+      mediaTypes: 'images',
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 0.8,
+    });
+
+    if (!result.canceled) {
+      setSelectedImage(result.assets[0].uri);
+    }
+  };
+
+  const handleCameraCapture = async () => {
+    if (!cameraPermission?.granted) {
+      setPendingCameraLaunch(true);
+      setShowCameraPermissionPrompt(true);
+      return;
+    }
+
+    await launchCamera();
+  };
+
+  const handleCameraPermissionContinue = async () => {
+    setShowCameraPermissionPrompt(false);
+    if (pendingCameraLaunch) {
+      setPendingCameraLaunch(false);
+      await launchCamera();
+    }
+  };
+
+  const handleGallerySelect = async () => {
     const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
-    
+
     if (status !== 'granted') {
       Alert.alert('Permission Required', 'Please grant camera roll permissions to upload images');
       return;
@@ -192,6 +229,19 @@ export default function StatusUpdateScreen() {
     if (!result.canceled) {
       setSelectedImage(result.assets[0].uri);
     }
+  };
+
+  const handleImagePicker = () => {
+    Alert.alert(
+      'Add Image',
+      'Choose an image source',
+      [
+        { text: 'Camera', onPress: handleCameraCapture },
+        { text: 'Gallery', onPress: handleGallerySelect },
+        { text: 'Cancel', style: 'cancel' },
+      ],
+      { cancelable: true }
+    );
   };
 
   const uploadImage = async (): Promise<string | null> => {
@@ -317,6 +367,22 @@ export default function StatusUpdateScreen() {
 
   return (
     <ScrollView style={styles.container}>
+      <Modal
+        visible={showCameraPermissionPrompt}
+        animationType="slide"
+        onRequestClose={() => {
+          setShowCameraPermissionPrompt(false);
+          setPendingCameraLaunch(false);
+        }}
+      >
+        <CameraPermissionPrompt
+          message="Camera access is required to take a photo for the status update"
+          permission={cameraPermission}
+          onRequestPermission={requestCameraPermission}
+          onContinue={handleCameraPermissionContinue}
+        />
+      </Modal>
+
       <View style={styles.header}>
         <Text style={styles.title}>Update Status</Text>
         <Text style={styles.subtitle}>{panel.name}</Text>

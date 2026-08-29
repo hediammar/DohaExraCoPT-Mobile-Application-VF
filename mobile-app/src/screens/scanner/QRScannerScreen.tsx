@@ -8,11 +8,14 @@ import { ScannerScreenNavigationProp } from '../../types/navigation';
 import { QatarColors } from '../../constants/colors';
 import { useLoadingOverlay } from '../../contexts/LoadingOverlayContext';
 import { NavigationBar } from '../../components/NavigationBar';
+import { CameraPermissionPrompt } from '../../components/CameraPermissionPrompt';
 import { supabase } from '../../lib/supabase';
 import { useAuth } from '../../contexts/AuthContext';
 
 export default function QRScannerScreen() {
   const [permission, requestPermission] = useCameraPermissions();
+  const [hasContinued, setHasContinued] = useState(false);
+  const initialPermissionChecked = useRef(false);
   const [scanned, setScanned] = useState(false);
   const [locationPermission, setLocationPermission] = useState<Location.LocationPermissionResponse | null>(null);
   const [isProcessing, setIsProcessing] = useState(false);
@@ -26,6 +29,15 @@ export default function QRScannerScreen() {
     // Request location permission when component mounts
     requestLocationPermission();
   }, []);
+
+  useEffect(() => {
+    if (permission && !initialPermissionChecked.current) {
+      initialPermissionChecked.current = true;
+      if (permission.granted) {
+        setHasContinued(true);
+      }
+    }
+  }, [permission]);
 
   const requestLocationPermission = async () => {
     try {
@@ -148,14 +160,16 @@ export default function QRScannerScreen() {
     );
   }
 
-  if (!permission.granted) {
+  const showPermissionPrompt = !permission.granted || !hasContinued;
+
+  if (showPermissionPrompt) {
     return (
-      <View style={styles.container}>
-        <Text style={styles.message}>No access to camera</Text>
-        <TouchableOpacity style={styles.button} onPress={requestPermission}>
-          <Text style={styles.buttonText}>Grant Permission</Text>
-        </TouchableOpacity>
-      </View>
+      <CameraPermissionPrompt
+        message="Camera access is required to scan the panel QR code"
+        permission={permission}
+        onRequestPermission={requestPermission}
+        onContinue={() => setHasContinued(true)}
+      />
     );
   }
 
